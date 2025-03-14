@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue } from "@/components/ui/select";
+import Footer from "@/components/footer.tsx";
 
 // Household Measure Equivalents
 const HOUSEHOLD_EQUIVALENTS: Record<string, number> = {
@@ -72,7 +73,7 @@ function App() {
     useEffect(() => {}, [selectedFoods]);
 
     return (
-        <div className="grid grid-cols-12 gap-6 px-4 py-6">
+        <div className="grid grid-cols-12 gap-6 px-4 py-6 min-h-screen">
             <div className="col-span-7">
                 <SearchBar onSearch={(query) => handleSearch(query, 1)} />
                 {loading && <p className="text-center text-gray-500 mt-2">Loading...</p>}
@@ -151,6 +152,7 @@ function App() {
                     <NutritionLabelFDA foods={selectedFoods}  totalServingSize={totalServingSizeInGrams}/>
                 )}
             </div>
+            <Footer/>
         </div>
     );
 }
