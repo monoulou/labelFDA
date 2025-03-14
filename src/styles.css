@@ -136,3 +136,9 @@ code {
     @apply bg-background text-foreground;
   }
 }
+
+@media print {
+  .hide-on-print {
+    display: none !important;
+  }
+}
