@@ -8,12 +8,16 @@ export interface Nutrient {
     nutrientName: string;
     nutrientId: number;
     name: string;
-    value: number;
     unitName: string;
+    value: number;
 }
 
 // Define the food item type
 export interface FoodItem {
+    householdUnit?: any;
+    servingsPerContainer?: number;
+    servingSize?: number;
+    //unit?: string;
     fdcId: number;
     description: string;
     brandOwner?: string;
