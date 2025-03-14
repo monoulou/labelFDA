@@ -32,7 +32,7 @@ const HOUSEHOLD_EQUIVALENTS: Record<string, number> = {
 
 interface NutritionLabelFDAProps {
     foods: FoodItem[];
-    totalServingSize: string;
+    totalServingSize: number;
 }
 
 export function NutritionLabelFDA({ foods, totalServingSize }: NutritionLabelFDAProps) {
@@ -221,7 +221,7 @@ export function NutritionLabelFDA({ foods, totalServingSize }: NutritionLabelFDA
             </Card>
             {/* 🏷️ Export Buttons */}
             <div className="mt-4 flex justify-center gap-4">
-                <Button onClick={printFn} className="bg-blue-500 text-white">🖨️ Print</Button>
+                <Button onClick={() => printFn()} className="bg-blue-500 text-white">🖨️ Print</Button>
                 <Button onClick={handleDownloadPDF} className="bg-green-500 text-white">📄 Download PDF</Button>
             </div>
         </div>
