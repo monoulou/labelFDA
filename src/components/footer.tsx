@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <footer className="w-full text-center py-4 mt-6">
+        <footer className="col-span-4 text-center py-4 mt-6">
             <p className="text-sm">
                 © {new Date().getFullYear()} Free Nutrition Facts Label Generator By
                 <a href="https://mysupersnack.com" className="text-blue-500 hover:underline"> MySuperSnack.com</a>

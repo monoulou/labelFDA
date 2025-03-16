@@ -73,12 +73,12 @@ function App() {
     useEffect(() => {}, [selectedFoods]);
 
     return (
-        <div className="grid grid-cols-12 gap-6 px-4 py-6 min-h-screen">
-            <div className="col-span-7">
-                <SearchBar onSearch={(query) => handleSearch(query, 1)} />
+        <div className="grid grid-cols-2 gap-6 px-4 py-6 min-h-screen">
+            <div className="col-span-4">
+                <SearchBar onSearch={(query) => handleSearch(query, 1)}/>
                 {loading && <p className="text-center text-gray-500 mt-2">Loading...</p>}
                 {error && <p className="text-center text-red-500 mt-2">{error}</p>}
-                <DataTable data={foods} onSelectFood={addFood} />
+                <DataTable data={foods} onSelectFood={addFood}/>
                 <div className="flex justify-center gap-4 mt-4">
                     <Button onClick={() => handleSearch(searchQuery, page - 1)} disabled={page === 1}>
                         ← Previous
@@ -95,21 +95,22 @@ function App() {
                     ) : (
                         <ul className="w-full">
                             {selectedFoods.map((food) => (
-                                <li key={food.fdcId} className="flex justify-between items-center bg-gray-100 p-2 rounded mb-2">
-                                    {/* ✅ Food Name & Remove Button */}
+                                <li key={food.fdcId}
+                                    className="flex justify-between items-center bg-gray-100 p-2 rounded mb-2">
+                                    {/*✅ Food Name & Remove Button*/}
                                     <div className="flex items-center gap-4">
                                         <Button
                                             onClick={() => removeFood(food.fdcId)}
                                             className="bg-red-500 text-white p-2 flex items-center"
                                         >
-                                            <TrashIcon className="w-5 h-5" /> {/* ✅ Trash Icon */}
+                                            <TrashIcon className="w-5 h-5"/>  {/*✅ Trash Icon*/}
                                         </Button>
                                         <span className="font-bold">{food.description}</span>
                                     </div>
 
-                                    {/* ✅ Serving Size & Household Unit Controls (INLINE) */}
+                                    {/*✅ Serving Size & Household Unit Controls (INLINE)*/}
                                     <div className="flex items-center gap-2">
-                                        {/* Serving Size Input */}
+                                         {/*Serving Size Input*/}
                                         <Input
                                             type="number"
                                             min="1"
@@ -118,13 +119,13 @@ function App() {
                                             className="w-16 text-center border border-black"
                                         />
 
-                                        {/* Household Unit Dropdown */}
+                                         {/*Household Unit Dropdown*/}
                                         <Select
                                             value={food.householdUnit ?? "cup"}
                                             onValueChange={(value) => updateServingSize(food.fdcId, food.servingSize ?? 1, value)}
                                         >
                                             <SelectTrigger className="w-24 border border-black">
-                                                <SelectValue placeholder="Unit" />
+                                                <SelectValue placeholder="Unit"/>
                                             </SelectTrigger>
                                             <SelectContent>
                                                 {Object.keys(HOUSEHOLD_EQUIVALENTS).map((unit) => (
@@ -140,7 +141,6 @@ function App() {
                         </ul>
                     )}
                 </div>
-
             </div>
 
             {/* Selected Foods List */}
@@ -149,12 +149,11 @@ function App() {
 
                 {/* Main Nutrition Label for all selected foods */}
                 {selectedFoods.length > 0 && (
-                    <NutritionLabelFDA foods={selectedFoods}  totalServingSize={totalServingSizeInGrams}/>
+                    <NutritionLabelFDA foods={selectedFoods} totalServingSize={totalServingSizeInGrams}/>
                 )}
             </div>
             <Footer/>
         </div>
     );
 }
-
 export default App;
