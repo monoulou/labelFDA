@@ -74,7 +74,9 @@ function App() {
 
     return (
         <div className="grid grid-cols-2 gap-6 px-4 py-6 min-h-screen">
+
             <div className="col-span-4">
+                <div className="text-center p-2"><h1>FREE NUTRITION LABEL GENERATOR</h1></div>
                 <SearchBar onSearch={(query) => handleSearch(query, 1)}/>
                 {loading && <p className="text-center text-gray-500 mt-2">Loading...</p>}
                 {error && <p className="text-center text-red-500 mt-2">{error}</p>}
